@@ -1,4 +1,4 @@
-|Build_Status| |Coverage| |Version| |Binder|
+|Build_Status| |Coverage| |Version| |Binder| |Scorecard|
 
 cti-stix-generator
 ==================
@@ -80,7 +80,7 @@ printed instead.
       -c CONFIG, --config CONFIG
                             Config file with options to customize how content
                             is generated.
-                            
+
 The generate_stix tool is used for more general object generation, which does
 not require a language file to be specified:
 
@@ -97,7 +97,7 @@ not require a language file to be specified:
       -h, --help            show this help message and exit
       --min-rels MIN_RELS   Minimum number of SROs to create. Default=1
       --max-rels MAX_RELS   Maximum number or SROs to create. Default=5
-      --p-reuse P_REUSE     Probability of object reuse, when creating new 
+      --p-reuse P_REUSE     Probability of object reuse, when creating new
                         connections among objects. Must be a real number in
                         [0, 1]. Lower values result in a graph with more nodes
                         and less interconnection. Higher values result in a
@@ -202,9 +202,9 @@ Initially, the TC members have designated one or more persons to serve as Mainta
 Current Maintainers of this TC Open Repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
--  `Chris Lenk <mailto:clenk@mitre.org>`__; GitHub ID: `clenk <https://github.com/clenk/>`__; WWW: `MITRE Corporation <http://www.mitre.org/>`__
+-  `Emily Ratliff <mailto:Emily.Ratliff@ibm.com>`__; GitHub ID: https://github.com/ejratl; WWW: `IBM <http://www.ibm.com/>`__
 
--  `Andy Chisholm <mailto:chisholm@mitre.org>`__; GitHub ID: `chisholm <https://github.com/chisholm/>`__; WWW: `MITRE Corporation <http://www.mitre.org/>`__
+-  `Duncan Sparrell <mailto:duncan@sfractal.com>`__; GitHub ID: https://github.com/sparrell; WWW: `sFractal <http://sfractal.com/>`__
 
 About OASIS TC Open Repositories
 --------------------------------
@@ -230,3 +230,5 @@ Please send general questions about TC Open Repository participation to OASIS St
    :target: https://pypi.org/project/stix2-generator/
 .. |Binder| image:: https://mybinder.org/badge_logo.svg
    :target: https://mybinder.org/v2/gh/oasis-open/cti-stix-generator/HEAD
+.. |Scorecard| image:: https://api.securityscorecards.dev/projects/github.com/oasis-open/cti-stix-generator/badge
+     :target: https://api.securityscorecards.dev/projects/github.com/oasis-open/cti-stix-generator

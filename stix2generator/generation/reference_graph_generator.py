@@ -2,12 +2,13 @@ import collections
 import collections.abc
 import enum
 import random
+
 import stix2.utils
 
 import stix2generator
-import stix2generator.utils
 import stix2generator.generation
 import stix2generator.generation.object_generator
+import stix2generator.utils
 
 
 class InversePropertyConstraint:
@@ -674,8 +675,8 @@ class ReferenceGraphGenerator:
         """
         if not seed_type:
             seed_type = self.__random_generatable_seed_type(
-                stix2generator.utils.STIXTypeClass.SDO,
-                stix2generator.utils.STIXTypeClass.SCO
+                stix2.utils.STIXTypeClass.SDO,
+                stix2.utils.STIXTypeClass.SCO
             )
         else:
             # Might seem kinda silly if seed_type is directly given as a string,

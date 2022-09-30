@@ -3,11 +3,11 @@ import os.path
 
 import faker
 
-import stix2generator.language.builder
 import stix2generator.generation.object_generator
 import stix2generator.generation.reference_graph_generator
 import stix2generator.generation.semantics
 import stix2generator.generation.stix_generator
+import stix2generator.language.builder
 from stix2generator.exceptions import RegistryNotFoundError
 
 try:
@@ -129,7 +129,13 @@ def _update_dict_recursive(base_dict, new_dict):
 
     for key, val in new_dict.items():
         if isinstance(val, Mapping):
-            base_dict[key] = _update_dict_recursive(base_dict.get(key, {}), val)
+            # if new val is empty, that means delete key
+            if not val and key in base_dict:
+                del base_dict[key]
+            else:
+                base_dict[key] = _update_dict_recursive(base_dict.get(key, {}), val)
+        elif isinstance(val, list) and key in base_dict:
+            base_dict[key].extend(val)
         else:
             base_dict[key] = val
     return base_dict

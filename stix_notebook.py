@@ -1,18 +1,17 @@
-from pygments import highlight
-from pygments.lexers import JsonLexer
-from pygments.formatters import HtmlFormatter
-from IPython.core.magic import register_cell_magic
-from IPython.display import HTML
 import configparser
 import json
 import re
 
 import stix2viz
+from IPython.core.magic import register_cell_magic
+from IPython.display import HTML
+from pygments import highlight
+from pygments.formatters import HtmlFormatter
+from pygments.lexers import JsonLexer
 
 import stix2generator
 import stix2generator.generation.object_generator
 from stix2generator.stixcustom import stix2_auto_register_all_custom
-
 
 CONFIG_FILE = "config.ini"
 EXTRA_SPECS = "custom_registry.json"
@@ -60,7 +59,7 @@ def stix(line, cell):
     viz_config_json = json.dumps(viz_config)
 
     output = ''
-    output += ',\n'.join(map(str, stix_objs))
+    output += ',\n'.join(obj.serialize(pretty=True) for obj in stix_objs)
     if output[0] == '{':
         if len(stix_objs) > 1:
             output = '[' + output + ']'

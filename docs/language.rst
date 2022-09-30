@@ -142,7 +142,7 @@ matching up generated STIX objects to components of language statements.  When
 usage is more complex and/or generates numerous objects, it can otherwise be
 difficult to understand what was generated.  Graphical visualization tools
 sometimes use certain properties to create graph labels.  For example, some
-objects have a "name" property, and "labels" is a common property.  
+objects have a "name" property, and "labels" is a common property.
 
 String literals are enclosed in double quotes.  Lists of literals can be
 expressed with square brackets:
@@ -239,6 +239,9 @@ Where *used*, a variable may not have either a count or a property block.  Where
     2 victims {name: "a victim"}: Identity.
 
     malware_a targets victims.
+
+Note that the property block must go before the colon when declared on a
+variable.
 
 The count on a variable is given before the variable name, similar to how it is
 done with domain objects and relationships in normal graph statements.  This
@@ -344,4 +347,3 @@ library recognizes the following types:
     User_Account
     Windows_Registry_Key
     X509_Certificate
-

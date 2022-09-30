@@ -1,14 +1,14 @@
+import sys
+
 import lark.exceptions
 import pytest
 import rdflib
-import sys
 
 import stix2generator
-from stix2generator.exceptions import (
-    CircularVariableDependenciesError, LanguageError, RedeclaredVariableError,
-    SpecificationNotFoundError, UndeclaredVariableError
-)
-
+from stix2generator.exceptions import (CircularVariableDependenciesError,
+                                       LanguageError, RedeclaredVariableError,
+                                       SpecificationNotFoundError,
+                                       UndeclaredVariableError)
 
 _STIX_URN_PREFIX_ID = "urn:stix:id:"
 _STIX_URN_PREFIX_TYPE = "urn:stix:type:"
@@ -177,7 +177,7 @@ def test_basic(processor):
     assert len(objs) == 1
 
     identity = objs[0]
-    assert(identity.type == "identity")
+    assert identity.type == "identity"
 
 
 def test_basic_count(processor):

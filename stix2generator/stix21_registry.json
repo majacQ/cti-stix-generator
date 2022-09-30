@@ -7,6 +7,13 @@
             "url",
             "hashes"
         ],
+        "presence-coconstraints": {
+            "dependencies": {
+                "decryption_key": [
+                    "encryption_algorithm"
+                ]
+            }
+        },
         "properties": {
             "type": "artifact",
             "id": {
@@ -193,7 +200,32 @@
             },
             "path_enc": {
                 "type": "string",
-                "semantics": "word"
+                "oneOf": [
+                    "US-ASCII",
+                    "ISO-8859-1",
+                    "ISO-8859-2",
+                    "ISO-8859-3",
+                    "ISO-8859-4",
+                    "ISO-8859-5",
+                    "ISO-8859-6",
+                    "ISO-8859-7",
+                    "ISO-8859-8",
+                    "ISO-8859-9",
+                    "ISO-8859-10",
+                    "Shift_JIS",
+                    "EUC-JP",
+                    "ISO-2022-KR",
+                    "EUC-KR",
+                    "ISO-2022-JP",
+                    "ISO-2022-JP-2",
+                    "ISO-8859-6-E",
+                    "ISO-8859-6-I",
+                    "ISO-8859-8-E",
+                    "ISO-8859-8-I",
+                    "GB2312",
+                    "Big5",
+                    "KOI8-R"
+                ]
             },
             "ctime": {
                 "type": "string",
@@ -545,6 +577,31 @@
             "contact_information": {
                 "type": "string",
                 "semantics": "address"
+            }
+        }
+    },
+    "incident": {
+        "type": "object",
+        "import": "common-properties",
+        "required": [
+            "id",
+            "type",
+            "name"
+        ],
+        "properties": {
+            "type": "incident",
+            "id": {
+                "type": "string",
+                "semantics": "stix-id",
+                "stix-type": "incident"
+            },
+            "name": {
+                "type": "string",
+                "semantics": "word"
+            },
+            "description": {
+                "type": "string",
+                "semantics": "sentence"
             }
         }
     },
@@ -1084,71 +1141,19 @@
         "oneOf": [
             {
                 "type": "object",
-                "properties": {
-                    "type": "marking-definition",
-                    "spec_version": "2.1",
-                    "id": "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9",
-                    "created": "2017-01-20T00:00:00.000Z",
-                    "definition_type": "tlp",
-                    "name": "TLP:WHITE",
-                    "definition": {
-                        "type": "object",
-                        "properties": {
-                            "tlp": "white"
-                        }
-                    }
-                }
+                "ref": "tlp-white"
             },
             {
                 "type": "object",
-                "properties": {
-                    "type": "marking-definition",
-                    "spec_version": "2.1",
-                    "id": "marking-definition--34098fce-860f-48ae-8e50-ebd3cc5e41da",
-                    "created": "2017-01-20T00:00:00.000Z",
-                    "definition_type": "tlp",
-                    "name": "TLP:GREEN",
-                    "definition": {
-                        "type": "object",
-                        "properties": {
-                            "tlp": "green"
-                        }
-                    }
-                }
+                "ref": "tlp-green"
             },
             {
                 "type": "object",
-                "properties": {
-                    "type": "marking-definition",
-                    "spec_version": "2.1",
-                    "id": "marking-definition--f88d31f6-486f-44da-b317-01333bde0b82",
-                    "created": "2017-01-20T00:00:00.000Z",
-                    "definition_type": "tlp",
-                    "name": "TLP:AMBER",
-                    "definition": {
-                        "type": "object",
-                        "properties": {
-                            "tlp": "amber"
-                        }
-                    }
-                }
+                "ref": "tlp-amber"
             },
             {
                 "type": "object",
-                "properties": {
-                    "type": "marking-definition",
-                    "spec_version": "2.1",
-                    "id": "marking-definition--5e57c739-391a-4eb3-b6be-7d15ca92d5ed",
-                    "created": "2017-01-20T00:00:00.000Z",
-                    "definition_type": "tlp",
-                    "name": "TLP:RED",
-                    "definition": {
-                        "type": "object",
-                        "properties": {
-                            "tlp": "red"
-                        }
-                    }
-                }
+                "ref": "tlp-red"
             },
             {
                 "type": "object",
@@ -1197,6 +1202,74 @@
                 }
             }
         ]
+    },
+    "tlp-white": {
+        "type": "object",
+        "properties": {
+            "type": "marking-definition",
+            "spec_version": "2.1",
+            "id": "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9",
+            "created": "2017-01-20T00:00:00.000Z",
+            "definition_type": "tlp",
+            "name": "TLP:WHITE",
+            "definition": {
+                "type": "object",
+                "properties": {
+                    "tlp": "white"
+                }
+            }
+        }
+    },
+    "tlp-green": {
+        "type": "object",
+        "properties": {
+            "type": "marking-definition",
+            "spec_version": "2.1",
+            "id": "marking-definition--34098fce-860f-48ae-8e50-ebd3cc5e41da",
+            "created": "2017-01-20T00:00:00.000Z",
+            "definition_type": "tlp",
+            "name": "TLP:GREEN",
+            "definition": {
+                "type": "object",
+                "properties": {
+                    "tlp": "green"
+                }
+            }
+        }
+    },
+    "tlp-amber": {
+        "type": "object",
+        "properties": {
+            "type": "marking-definition",
+            "spec_version": "2.1",
+            "id": "marking-definition--f88d31f6-486f-44da-b317-01333bde0b82",
+            "created": "2017-01-20T00:00:00.000Z",
+            "definition_type": "tlp",
+            "name": "TLP:AMBER",
+            "definition": {
+                "type": "object",
+                "properties": {
+                    "tlp": "amber"
+                }
+            }
+        }
+    },
+    "tlp-red": {
+        "type": "object",
+        "properties": {
+            "type": "marking-definition",
+            "spec_version": "2.1",
+            "id": "marking-definition--5e57c739-391a-4eb3-b6be-7d15ca92d5ed",
+            "created": "2017-01-20T00:00:00.000Z",
+            "definition_type": "tlp",
+            "name": "TLP:RED",
+            "definition": {
+                "type": "object",
+                "properties": {
+                    "tlp": "red"
+                }
+            }
+        }
     },
     "mutex": {
         "type": "object",
@@ -2287,6 +2360,11 @@
             {
                 "type": "string",
                 "semantics": "stix-id",
+                "stix-type": "incident"
+            },
+            {
+                "type": "string",
+                "semantics": "stix-id",
                 "stix-type": "indicator"
             },
             {
@@ -2693,15 +2771,18 @@
     },
     "indicator-type-ov": {
         "type": "string",
-        "oneOf": [
-            "anomalous-activity",
-            "anonymization",
-            "benign",
-            "compromised",
-            "malicious-activity",
-            "attribution",
-            "unknown"
-        ]
+        "oneOf": {
+            "choices": [
+                            "anomalous-activity",
+                            "anonymization",
+                            "benign",
+                            "compromised",
+                            "malicious-activity",
+                            "attribution",
+                            "unknown"
+            ],
+            "weights": [10, 10, 10, 10, 10, 10, 40]
+        }
     },
     "industry-sector-ov": {
         "type": "string",
@@ -2749,12 +2830,16 @@
             "anonymization",
             "botnet",
             "command-and-control",
+            "control-system",
             "exfiltration",
+            "firewall",
             "hosting-malware",
             "hosting-target-lists",
             "phishing",
             "reconnaissance",
+            "routers-switches",
             "staging",
+            "workstation",
             "unknown"
         ]
     },
@@ -3102,6 +3187,10 @@
         "type": "object",
         "ref": "identity"
     },
+    "Incident": {
+        "type": "object",
+        "ref": "incident"
+    },
     "Indicator": {
         "type": "object",
         "ref": "indicator"
@@ -3201,5 +3290,21 @@
     "X509_Certificate": {
         "type": "object",
         "ref": "x509-certificate"
+    },
+    "TLP_White": {
+        "type": "object",
+        "ref": "tlp-white"
+    },
+    "TLP_Green": {
+        "type": "object",
+        "ref": "tlp-green"
+    },
+    "TLP_Amber": {
+        "type": "object",
+        "ref": "tlp-amber"
+    },
+    "TLP_Red": {
+        "type": "object",
+        "ref": "tlp-red"
     }
 }

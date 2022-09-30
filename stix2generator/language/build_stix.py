@@ -3,8 +3,8 @@ import configparser
 import json
 
 import stix2generator
-import stix2generator.language.builder
 import stix2generator.generation.object_generator
+import stix2generator.language.builder
 import stix2generator.logging
 
 
@@ -49,6 +49,12 @@ def parse_args():
                             in prototyping language content.
                             """
                             )
+    arg_parser.add_argument("--interop",
+                            help="""Specifies to use a custorm interop registry
+                            so content mirrors valid interop content. Warning,
+                            overwrites extra-specs if both called.
+                            """,
+                            action="store_true")
     arg_parser.add_argument("-n", "--embed-variable-names",
                             help="""Embed variable names in generated objects
                             using a custom property.
@@ -78,7 +84,9 @@ def main():
     if args.extra_specs:
         with open(args.extra_specs, "r", encoding=args.encoding) as f:
             extra_specs = json.load(f)
-
+    if args.interop:
+        with open('../interop_custom.json', "r", encoding=args.encoding) as f:
+            extra_specs = json.load(f)
     tmp_config = {}
     if args.config:
         config_parser = configparser.SafeConfigParser()
